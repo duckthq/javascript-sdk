@@ -1,7 +1,7 @@
 class DucktClient {
-  constructor({ proxyId, proxySecret, endpoint = 'https://api.duckt.dev' }) {
-    this.proxyId = proxyId;
-    this.proxySecret = proxySecret;
+  constructor({ clientId, clientSecret, endpoint = 'https://api.duckt.dev' }) {
+    this.clientId = clientId;
+    this.clientSecret = clientSecret;
     this.endpoint = endpoint;
     this.queue = [];
     this.processing = false;
@@ -42,8 +42,8 @@ class DucktClient {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Proxy-ID': this.proxyId,
-          'X-Proxy-Secret': this.proxySecret
+          'X-Proxy-ID': this.clientId,
+          'X-Proxy-Secret': this.clientSecret
         },
         body: JSON.stringify(item.data)
       });
@@ -63,7 +63,7 @@ class DucktClient {
 }
 
 // Usage:
-// const client = new DucktClient({ proxyId: 'abc123', proxySecret: 'secret123' });
+// const client = new DucktClient({ clientId: 'abc123', clientSecret: 'secret123' });
 // client.sendRequest({
 //   uri: '/api/users',
 //   host: 'example.com',
